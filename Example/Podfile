@@ -1,0 +1,10 @@
+target 'Trim', :exclusive => true do
+  pod "Trim", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "Trim", :path => "../"
+
+  pod 'Kiwi'
+  pod 'FBSnapshotTestCase'
+end
