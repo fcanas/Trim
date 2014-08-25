@@ -1,0 +1,20 @@
+PODS:
+  - FBSnapshotTestCase (1.1)
+  - Kiwi (2.3.0)
+  - Trim (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - Kiwi
+  - Trim (from `../`)
+
+EXTERNAL SOURCES:
+  Trim:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 9053afee1d66b4c7c313fcb0ae582a5e47bea9d0
+  Kiwi: 54bece5b35564d9b8e03c608d926f1a22fcfc589
+  Trim: 7fba6cfd85017899693387ecfd07517a64f56f6e
+
+COCOAPODS: 0.33.1
