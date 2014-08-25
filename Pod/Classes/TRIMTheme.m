@@ -36,6 +36,29 @@
     return [self.theme[key] floatValue];
 }
 
+#pragma mark - Fonts
+
+- (UIFont *)fontForHeadline
+{
+    return [self fontWithNameKey:@"primaryFont" sizeKey:@"headlineSize"];
+}
+
+- (UIFont *)fontForSubheadline
+{
+    return [self fontWithNameKey:@"primaryFont" sizeKey:@"subheadlineSize"];
+}
+
+- (UIFont *)fontForBody
+{
+    return [self fontWithNameKey:@"primaryFont" sizeKey:@"bodySize"];
+}
+
+- (UIFont *)fontWithNameKey:(NSString *)nameKey sizeKey:(NSString *)sizeKey
+{
+    return [UIFont fontWithName:[self stringForKey:nameKey]
+                           size:[self floatForKey:sizeKey]];
+}
+
 #pragma mark - Colors
 
 - (UIColor *)colorForKey:(NSString *)key

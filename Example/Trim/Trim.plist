@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>goofyFont</key>
+	<string>Zapfino</string>
+	<key>goofyFontSize</key>
+	<integer>27</integer>
+	<key>primaryFont</key>
+	<string>Avenir-Book</string>
+	<key>headlineSize</key>
+	<integer>24</integer>
+	<key>subheadlineSize</key>
+	<integer>18</integer>
+	<key>bodySize</key>
+	<integer>12</integer>
 	<key>primaryBrandColor</key>
 	<string>mojoGreen</string>
 	<key>mojoGreen</key>
