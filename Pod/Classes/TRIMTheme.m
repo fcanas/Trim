@@ -28,9 +28,13 @@
 
 - (UIColor *)colorForKey:(NSString *)key
 {
-    NSString *colorString = self.theme[key];
-    NSLog(@"%@ : %@", key, colorString);
-    return colorWithHexString(colorString);
+    NSString *keyValue = self.theme[key];
+    
+    if ([keyValue hasPrefix:@"#"]) {
+        return colorWithHexString(keyValue);
+    }
+    
+    return [self colorForKey:keyValue];
 }
 
 static UIColor *colorWithHexString(NSString *colorString) {

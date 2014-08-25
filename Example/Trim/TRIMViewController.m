@@ -21,7 +21,7 @@
     
     TRIMTheme *theme = [[TRIMTheme alloc] initWithName:@"Trim"];
     
-    self.view.backgroundColor = [theme colorForKey:@"backgroundColor"];
+    self.view.backgroundColor = [theme colorForKey:@"primaryBrandColor"];
     
 	// Do any additional setup after loading the view, typically from a nib.
 }
