@@ -26,6 +26,18 @@
     return self;
 }
 
+- (NSString *)stringForKey:(NSString *)key
+{
+    return self.theme[key];
+}
+
+- (CGFloat)floatForKey:(NSString *)key
+{
+    return [self.theme[key] floatValue];
+}
+
+#pragma mark - Colors
+
 - (UIColor *)colorForKey:(NSString *)key
 {
     NSString *keyValue = self.theme[key];

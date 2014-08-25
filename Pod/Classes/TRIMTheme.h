@@ -15,4 +15,7 @@
 
 - (UIColor *)colorForKey:(NSString *)key;
 
+- (NSString *)stringForKey:(NSString *)key;
+- (CGFloat)floatForKey:(NSString *)key;
+
 @end
