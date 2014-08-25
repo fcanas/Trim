@@ -7,6 +7,7 @@
 //
 
 #import "TRIMViewController.h"
+#import <Trim/TRIMTheme.h>
 
 @interface TRIMViewController ()
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    TRIMTheme *theme = [[TRIMTheme alloc] initWithName:@"Trim"];
+    
+    self.view.backgroundColor = [theme colorForKey:@"backgroundColor"];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
