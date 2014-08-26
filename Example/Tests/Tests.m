@@ -37,4 +37,20 @@
                           [UIColor colorWithRed:0x28/255. green:0xba/255. blue:0 alpha:1.0], @"Primary brand color should be mojo green. - Hierarchical color names.");
 }
 
+- (void)testCustomFontLoading
+{
+    XCTAssertEqualObjects([self.theme fontWithNameKey:@"goofyFont" sizeKey:@"goofyFontSize"],
+                          [UIFont fontWithName:@"Zapfino" size:27], @"Should load and build the right font with a name and size key");
+}
+
+- (void)testPresetFonts
+{
+    XCTAssertEqualObjects([self.theme fontForBody],
+                          [UIFont fontWithName:@"Avenir-Book" size:12], @"Should return the right font for body with preset keys");
+    XCTAssertEqualObjects([self.theme fontForSubheadline],
+                          [UIFont fontWithName:@"Avenir-Book" size:18], @"Should return the right font for subheadline with preset keys");
+    XCTAssertEqualObjects([self.theme fontForHeadline],
+                          [UIFont fontWithName:@"Avenir-Book" size:24], @"Should return the right font for headline with preset keys");
+}
+
 @end
