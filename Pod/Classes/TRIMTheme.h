@@ -11,7 +11,9 @@
 
 @interface TRIMTheme : NSObject
 
-- (instancetype)initWithName:(NSString *)fileName;
++ (instancetype)themeWithName:(NSString *)themeName;
+
+- (instancetype)initWithName:(NSString *)themeName;
 
 - (UIColor *)colorForKey:(NSString *)key;
 

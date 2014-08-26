@@ -10,9 +10,15 @@
 
 @interface TRIMTheme ()
 @property (nonatomic, copy) NSDictionary *theme;
+@property (nonatomic, strong) NSCache *colorCache;
 @end
 
 @implementation TRIMTheme
+
++ (instancetype)themeWithName:(NSString *)themeName
+{
+    return [[self alloc] initWithName:themeName];
+}
 
 - (instancetype)initWithName:(NSString *)fileName
 {
@@ -22,6 +28,7 @@
     }
     
     _theme = [[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"]] copy];
+    _colorCache = [NSCache new];
     
     return self;
 }
@@ -63,13 +70,22 @@
 
 - (UIColor *)colorForKey:(NSString *)key
 {
+    UIColor *cachedColor = [self.colorCache objectForKey:key];
+    if (cachedColor != nil) {
+        return cachedColor;
+    }
+    
     NSString *keyValue = self.theme[key];
     
     if ([keyValue hasPrefix:@"#"]) {
-        return colorWithHexString(keyValue);
+        UIColor *color = colorWithHexString(keyValue);
+        [self.colorCache setObject:color forKey:key];
+        return color;
     }
     
-    return [self colorForKey:keyValue];
+    UIColor *color = [self colorForKey:keyValue];
+    [self.colorCache setObject:color forKey:key];
+    return color;
 }
 
 static UIColor *colorWithHexString(NSString *colorString) {
@@ -81,7 +97,7 @@ static UIColor *colorWithHexString(NSString *colorString) {
     
 	NSInteger red   = (colorInt & 0xff0000) >> 16;
     NSInteger green = (colorInt & 0x00ff00) >> 8;
-    NSInteger blue  = colorInt & 0x0000ff;
+    NSInteger blue  = (colorInt & 0x0000ff);
     
 	return [UIColor colorWithRed:(CGFloat)red/255.0f green:(CGFloat)green/255.0f blue:(CGFloat)blue/255.0f alpha:1.0f];
 }

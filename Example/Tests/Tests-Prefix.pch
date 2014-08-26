@@ -1,12 +1,10 @@
 //
 //  Prefix header
 //
-//  The contents of this file are implicitly included at the beginning of every test case source file.
+//  The contents of this file are implicitly included at the beginning of every source file.
 //
 
 #ifdef __OBJC__
-
-  #import <Kiwi/Kiwi.h>
-  #import <FBSnapshotTestCase/FBSnapshotTestCase.h>
-
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
 #endif
