@@ -1,42 +1,40 @@
 //
-//  TrimTests.m
-//  TrimTests
+//  Tests.m
+//  Tests
 //
-//  Created by Fabian Canas on 08/25/2014.
+//  Created by Fabian Canas on 8/25/14.
 //  Copyright (c) 2014 Fabian Canas. All rights reserved.
 //
 
-SPEC_BEGIN(InitialTests)
+#import <XCTest/XCTest.h>
+#import <Trim/TRIMTheme.h>
 
-describe(@"My initial tests", ^{
+@interface Tests : XCTestCase
+@property (nonatomic, strong) TRIMTheme *theme;
+@end
 
-  context(@"will fail", ^{
+@implementation Tests
 
-      it(@"can do maths", ^{
-          [[@1 should] equal:@2];
-      });
+- (void)setUp
+{
+    [super setUp];
+    self.theme = [[TRIMTheme alloc] initWithName:@"Trim"];
+}
 
-      it(@"can read", ^{
-          [[@"number" should] equal:@"string"];
-      });
-    
-      it(@"will wait and fail", ^{
-          NSObject *object = [[NSObject alloc] init];
-          [[expectFutureValue(object) shouldEventually] receive:@selector(autoContentAccessingProxy)];
-      });
-  });
+- (void)tearDown
+{
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
 
-  context(@"will pass", ^{
-    
-      it(@"can do maths", ^{
-        [[@1 should] beLessThan:@23];
-      });
-    
-      it(@"can read", ^{
-          [[@"team" shouldNot] containString:@"I"];
-      });  
-  });
-  
-});
+- (void)testColors
+{
+    XCTAssertEqualObjects([self.theme colorForKey:@"backgroundColor"], [UIColor redColor], @"Background color should be red.");
+    //#28ba00
+    XCTAssertEqualObjects([self.theme colorForKey:@"mojoGreen"],
+                          [UIColor colorWithRed:0x28/255. green:0xba/255. blue:0 alpha:1.0], @"Mojo green should be mojo green.");
+    XCTAssertEqualObjects([self.theme colorForKey:@"primaryBrandColor"],
+                          [UIColor colorWithRed:0x28/255. green:0xba/255. blue:0 alpha:1.0], @"Primary brand color should be mojo green. - Hierarchical color names.");
+}
 
-SPEC_END
+@end

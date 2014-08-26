@@ -15,6 +15,11 @@
 
 @implementation TRIMTheme
 
++ (instancetype)themeWithName:(NSString *)themeName
+{
+    return [[self alloc] initWithName:themeName];
+}
+
 - (instancetype)initWithName:(NSString *)fileName
 {
     self = [super init];
