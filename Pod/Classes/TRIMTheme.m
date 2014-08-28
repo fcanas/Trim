@@ -15,19 +15,20 @@
 
 @implementation TRIMTheme
 
-+ (instancetype)themeWithName:(NSString *)themeName
++ (instancetype)themeFromPlistNamed:(NSString *)themeName
 {
-    return [[self alloc] initWithName:themeName];
+    NSDictionary *dict = [[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:themeName ofType:@"plist"]] copy];
+    return [[self alloc] initWithDictionary:dict];
 }
 
-- (instancetype)initWithName:(NSString *)fileName
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
     if (self == nil) {
         return nil;
     }
     
-    _theme = [[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"]] copy];
+    _theme = dictionary;
     _colorCache = [NSCache new];
     
     return self;

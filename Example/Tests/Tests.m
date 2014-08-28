@@ -18,7 +18,7 @@
 - (void)setUp
 {
     [super setUp];
-    self.theme = [[TRIMTheme alloc] initWithName:@"Trim"];
+    self.theme = [TRIMTheme themeFromPlistNamed:@"Trim"];
 }
 
 - (void)tearDown

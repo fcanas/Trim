@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
     
-    TRIMTheme *theme = [[TRIMTheme alloc] initWithName:@"Trim"];
+    TRIMTheme *theme = [TRIMTheme themeFromPlistNamed:@"Trim"];
     
     self.view.backgroundColor = [theme colorForKey:@"primaryBrandColor"];
     
