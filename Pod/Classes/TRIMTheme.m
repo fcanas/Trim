@@ -8,6 +8,8 @@
 
 #import "TRIMTheme.h"
 
+#import <objc/runtime.h>
+
 @interface TRIMTheme ()
 @property (nonatomic, copy) NSDictionary *theme;
 @property (nonatomic, strong) NSCache *colorCache;
@@ -65,6 +67,27 @@
 {
     return [UIFont fontWithName:[self stringForKey:nameKey]
                            size:[self floatForKey:sizeKey]];
+}
+
+#pragma mark - Dymanic Method Resolution
+
+UIColor *resolveColorIMP(TRIMTheme *self,SEL _cmd)
+{
+    return [self colorForKey:NSStringFromSelector(_cmd)];
+}
+
++ (BOOL)resolveInstanceMethod:(SEL)aSEL
+{
+    objc_property_t property = class_getProperty(self, sel_getName(aSEL));
+    
+    char *propertyType = property_copyAttributeValue(property, "T");
+    
+    if (strcmp(propertyType, "@\"UIColor\"") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolveColorIMP, "@@:");
+        return YES;
+    }
+    
+    return [super resolveInstanceMethod:aSEL];
 }
 
 #pragma mark - Colors
