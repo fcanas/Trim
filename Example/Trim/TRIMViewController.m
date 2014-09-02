@@ -8,6 +8,7 @@
 
 #import "TRIMViewController.h"
 #import <Trim/TRIMTheme.h>
+#import "ThemeSubclass.h"
 
 @interface TRIMViewController ()
 
@@ -19,9 +20,9 @@
 {
     [super viewDidLoad];
     
-    TRIMTheme *theme = [TRIMTheme themeFromPlistNamed:@"Trim"];
+    ThemeSubclass *theme = [ThemeSubclass themeFromPlistNamed:@"Trim"];
     
-    self.view.backgroundColor = [theme colorForKey:@"primaryBrandColor"];
+    self.view.backgroundColor = theme.backgroundColor;
     
     // Examples for some built-in keys for typical font use-cases.
     self.headlineLabel.font = [theme fontForHeadline];
