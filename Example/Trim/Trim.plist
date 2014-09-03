@@ -6,19 +6,27 @@
 	<string>Zapfino</string>
 	<key>goofyFontSize</key>
 	<integer>27</integer>
-	<key>primaryFont</key>
+	<key>headlineFont</key>
 	<string>Avenir-Book</string>
-	<key>headlineSize</key>
+	<key>subheadlineFont</key>
+	<string>Avenir-Book</string>
+	<key>bodyFont</key>
+	<string>Avenir-Book</string>
+	<key>headlineFontSize</key>
 	<integer>24</integer>
-	<key>subheadlineSize</key>
+	<key>subheadlineFontSize</key>
 	<integer>18</integer>
-	<key>bodySize</key>
+	<key>bodyFontSize</key>
 	<integer>12</integer>
 	<key>primaryBrandColor</key>
 	<string>mojoGreen</string>
 	<key>mojoGreen</key>
 	<string>#28ba00</string>
 	<key>backgroundColor</key>
-	<string>#ff0000</string>
+	<string>betterRed</string>
+	<key>red</key>
+	<string>#FF0000</string>
+	<key>betterRed</key>
+	<string>#FF4136</string>
 </dict>
 </plist>
