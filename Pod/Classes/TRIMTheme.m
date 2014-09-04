@@ -48,25 +48,17 @@
 
 #pragma mark - Fonts
 
-- (UIFont *)fontForHeadline
-{
-    return [self fontWithNameKey:@"primaryFont" sizeKey:@"headlineSize"];
-}
-
-- (UIFont *)fontForSubheadline
-{
-    return [self fontWithNameKey:@"primaryFont" sizeKey:@"subheadlineSize"];
-}
-
-- (UIFont *)fontForBody
-{
-    return [self fontWithNameKey:@"primaryFont" sizeKey:@"bodySize"];
-}
+@dynamic headlineFont, subheadlineFont, bodyFont;
 
 - (UIFont *)fontWithNameKey:(NSString *)nameKey sizeKey:(NSString *)sizeKey
 {
     return [UIFont fontWithName:[self stringForKey:nameKey]
                            size:[self floatForKey:sizeKey]];
+}
+
+- (UIFont *)fontForKey:(NSString *)key
+{
+    return [self fontWithNameKey:key sizeKey:[NSString stringWithFormat:@"%@Size", key]];
 }
 
 #pragma mark - Dymanic Method Resolution
@@ -76,14 +68,22 @@ UIColor *resolveColorIMP(TRIMTheme *self,SEL _cmd)
     return [self colorForKey:NSStringFromSelector(_cmd)];
 }
 
+UIFont *resolveFontIMP(TRIMTheme *self, SEL _cmd)
+{
+    return [self fontForKey:NSStringFromSelector(_cmd)];
+}
+
 + (BOOL)resolveInstanceMethod:(SEL)aSEL
 {
     objc_property_t property = class_getProperty(self, sel_getName(aSEL));
     
     char *propertyType = property_copyAttributeValue(property, "T");
     
-    if (strcmp(propertyType, "@\"UIColor\"") == 0){
+    if (propertyType && strcmp(propertyType, "@\"UIColor\"") == 0){
         class_addMethod([self class], aSEL, (IMP) resolveColorIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "@\"UIFont\"") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolveFontIMP, "@@:");
         return YES;
     }
     

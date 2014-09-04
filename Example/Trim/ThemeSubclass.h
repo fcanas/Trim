@@ -12,5 +12,8 @@
 
 @property (nonatomic, readonly) UIColor *mojoGreen;
 @property (nonatomic, readonly) UIColor *backgroundColor;
+@property (nonatomic, readonly) UIColor *red;
+
+@property (nonatomic, readonly) UIFont *goofyFont;
 
 @end

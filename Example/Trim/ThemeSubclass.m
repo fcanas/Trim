@@ -10,7 +10,6 @@
 
 @implementation ThemeSubclass
 
-@dynamic mojoGreen;
-@dynamic backgroundColor;
+@dynamic mojoGreen, backgroundColor, red, goofyFont;
 
 @end

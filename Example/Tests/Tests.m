@@ -29,7 +29,7 @@
 
 - (void)testColors
 {
-    XCTAssertEqualObjects([self.theme colorForKey:@"backgroundColor"], [UIColor redColor], @"Background color should be red.");
+    XCTAssertEqualObjects([self.theme colorForKey:@"red"], [UIColor redColor], @"Background color should be red.");
     //#28ba00
     XCTAssertEqualObjects([self.theme colorForKey:@"mojoGreen"],
                           [UIColor colorWithRed:0x28/255. green:0xba/255. blue:0 alpha:1.0], @"Mojo green should be mojo green.");
@@ -45,11 +45,11 @@
 
 - (void)testPresetFonts
 {
-    XCTAssertEqualObjects([self.theme fontForBody],
+    XCTAssertEqualObjects([self.theme bodyFont],
                           [UIFont fontWithName:@"Avenir-Book" size:12], @"Should return the right font for body with preset keys");
-    XCTAssertEqualObjects([self.theme fontForSubheadline],
+    XCTAssertEqualObjects([self.theme subheadlineFont],
                           [UIFont fontWithName:@"Avenir-Book" size:18], @"Should return the right font for subheadline with preset keys");
-    XCTAssertEqualObjects([self.theme fontForHeadline],
+    XCTAssertEqualObjects([self.theme headlineFont],
                           [UIFont fontWithName:@"Avenir-Book" size:24], @"Should return the right font for headline with preset keys");
 }
 

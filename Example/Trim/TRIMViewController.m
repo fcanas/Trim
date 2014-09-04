@@ -25,12 +25,12 @@
     self.view.backgroundColor = theme.backgroundColor;
     
     // Examples for some built-in keys for typical font use-cases.
-    self.headlineLabel.font = [theme fontForHeadline];
-    self.subheadlineLabel.font = [theme fontForSubheadline];
-    self.bodyLabel.font = [theme fontForBody];
+    self.headlineLabel.font = [theme headlineFont];
+    self.subheadlineLabel.font = [theme subheadlineFont];
+    self.bodyLabel.font = [theme bodyFont];
     
     // This is how you would accomplish much more nuanced font organization.
-    self.goofyLabel.font = [theme fontWithNameKey:@"goofyFont" sizeKey:@"goofyFontSize"];
+    self.goofyLabel.font = [theme goofyFont];
 }
 
 - (void)didReceiveMemoryWarning

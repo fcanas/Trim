@@ -29,18 +29,23 @@
 - (UIFont *)fontWithNameKey:(NSString *)nameKey sizeKey:(NSString *)sizeKey;
 
 /**
- Returns a font build with `primaryFont` and `headlineSize` key values.
+ Convenience method to build a font from the name in 'key' and size in 'keySize;
  */
-- (UIFont *)fontForHeadline;
+- (UIFont *)fontForKey:(NSString *)key;
 
 /**
- Returns a font build with `primaryFont` and `subheadlineSize` key values.
+ Returns a font build with `headlineFont` and `headlineFontSize` key values.
  */
-- (UIFont *)fontForSubheadline;
+@property (nonatomic, readonly) UIFont *headlineFont;
 
 /**
- Returns a font build with `primaryFont` and `bodySize` key values.
+ Returns a font build with `fontForSubheadline` and `subheadlineFontSize` key values.
  */
-- (UIFont *)fontForBody;
+@property (nonatomic, readonly) UIFont *subheadlineFont;
+
+/**
+ Returns a font build with `bodyFont` and `bodyFontSize` key values.
+ */
+@property (nonatomic, readonly) UIFont *bodyFont;
 
 @end
