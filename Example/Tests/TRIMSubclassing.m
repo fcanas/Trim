@@ -43,4 +43,15 @@
                           [UIFont fontWithName:@"Zapfino" size:27], @"Should load and build the right font with a name and size key");
 }
 
+- (void)testPoints
+{
+    CGPoint aPoint = [self.theme aPoint];
+    XCTAssertEqual(aPoint.x, 150);
+    XCTAssertEqual(aPoint.y, 400);
+    
+    CGPoint zeroPoint = [self.theme zeroPoint];
+    XCTAssertEqual(zeroPoint.x, 0);
+    XCTAssertEqual(zeroPoint.y, 0);
+}
+
 @end

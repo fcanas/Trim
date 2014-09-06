@@ -81,6 +81,11 @@ UIFont *resolveFontIMP(TRIMTheme *self, SEL _cmd)
     return [self fontForKey:NSStringFromSelector(_cmd)];
 }
 
+CGPoint resolvePointIMP(TRIMTheme *self, SEL _cmd)
+{
+    return [self pointForKey:NSStringFromSelector(_cmd)];
+}
+
 + (BOOL)resolveInstanceMethod:(SEL)aSEL
 {
     objc_property_t property = class_getProperty(self, sel_getName(aSEL));
@@ -92,6 +97,12 @@ UIFont *resolveFontIMP(TRIMTheme *self, SEL _cmd)
         return YES;
     } else if (propertyType && strcmp(propertyType, "@\"UIFont\"") == 0){
         class_addMethod([self class], aSEL, (IMP) resolveFontIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGPoint=ff}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolvePointIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGPoint=dd}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolvePointIMP, "@@:");
         return YES;
     }
     
