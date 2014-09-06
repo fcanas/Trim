@@ -41,6 +41,8 @@
 {
     XCTAssertEqualObjects([self.theme fontWithNameKey:@"goofyFont" sizeKey:@"goofyFontSize"],
                           [UIFont fontWithName:@"Zapfino" size:27], @"Should load and build the right font with a name and size key");
+    XCTAssertEqualObjects([self.theme fontForKey:@"goofyFont"],
+                          [UIFont fontWithName:@"Zapfino" size:27], @"Should load and build the right font with a name and size key");
 }
 
 - (void)testPresetFonts
