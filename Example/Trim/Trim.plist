@@ -28,5 +28,19 @@
 	<string>#FF0000</string>
 	<key>betterRed</key>
 	<string>#FF4136</string>
+	<key>zeroPoint</key>
+	<dict>
+		<key>x</key>
+		<integer>0</integer>
+		<key>y</key>
+		<integer>0</integer>
+	</dict>
+	<key>aPoint</key>
+	<dict>
+		<key>x</key>
+		<integer>150</integer>
+		<key>y</key>
+		<integer>400</integer>
+	</dict>
 </dict>
 </plist>

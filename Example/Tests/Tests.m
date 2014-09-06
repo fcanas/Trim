@@ -55,4 +55,15 @@
                           [UIFont fontWithName:@"Avenir-Book" size:24], @"Should return the right font for headline with preset keys");
 }
 
+- (void)testPoints
+{
+    CGPoint aPoint = [self.theme pointForKey:@"aPoint"];
+    XCTAssertEqual(aPoint.x, 150);
+    XCTAssertEqual(aPoint.y, 400);
+    
+    CGPoint zeroPoint = [self.theme pointForKey:@"zeroPoint"];
+    XCTAssertEqual(zeroPoint.x, 0);
+    XCTAssertEqual(zeroPoint.y, 0);
+}
+
 @end

@@ -21,6 +21,10 @@
 
 - (CGFloat)floatForKey:(NSString *)key;
 
+#pragma mark CGGeometry
+
+- (CGPoint)pointForKey:(NSString *)key;
+
 #pragma mark - Fonts
 
 /**

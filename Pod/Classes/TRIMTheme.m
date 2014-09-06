@@ -46,6 +46,14 @@
     return [self.theme[key] floatValue];
 }
 
+#pragma mark CGGeometry
+
+- (CGPoint)pointForKey:(NSString *)key
+{
+    NSDictionary *pointDict = self.theme[key];
+    return CGPointMake([pointDict[@"x"] floatValue], [pointDict[@"y"] floatValue]);
+}
+
 #pragma mark - Fonts
 
 @dynamic headlineFont, subheadlineFont, bodyFont;
