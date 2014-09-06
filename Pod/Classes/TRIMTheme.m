@@ -54,6 +54,12 @@
     return CGPointMake([pointDict[@"x"] floatValue], [pointDict[@"y"] floatValue]);
 }
 
+- (CGSize)sizeForKey:(NSString *)key
+{
+    NSDictionary *sizeDict = self.theme[key];
+    return CGSizeMake([sizeDict[@"width"] floatValue], [sizeDict[@"height"] floatValue]);
+}
+
 #pragma mark - Fonts
 
 @dynamic headlineFont, subheadlineFont, bodyFont;

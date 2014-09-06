@@ -25,6 +25,8 @@
 
 - (CGPoint)pointForKey:(NSString *)key;
 
+- (CGSize)sizeForKey:(NSString *)key;
+
 #pragma mark - Fonts
 
 /**
