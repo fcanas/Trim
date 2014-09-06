@@ -60,6 +60,14 @@
     return CGSizeMake([sizeDict[@"width"] floatValue], [sizeDict[@"height"] floatValue]);
 }
 
+- (CGRect)rectForKey:(NSString *)key
+{
+    NSDictionary *rectDictionary = self.theme[key];
+    NSDictionary *origin = rectDictionary[@"origin"];
+    NSDictionary *size = rectDictionary[@"size"];
+    return CGRectMake([origin[@"x"] floatValue], [origin[@"y"] floatValue], [size[@"width"] floatValue], [size[@"height"] floatValue]);
+}
+
 #pragma mark - Fonts
 
 @dynamic headlineFont, subheadlineFont, bodyFont;

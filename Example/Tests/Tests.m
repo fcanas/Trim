@@ -77,4 +77,27 @@
     XCTAssertEqual(zeroSize.height, 0);
 }
 
+- (void)testRects
+{
+    CGRect aRect = [self.theme rectForKey:@"aRect"];
+    
+    CGPoint aPoint = aRect.origin;
+    XCTAssertEqual(aPoint.x, 150);
+    XCTAssertEqual(aPoint.y, 400);
+   
+    CGSize aSize = aRect.size;
+    XCTAssertEqual(aSize.width, 150);
+    XCTAssertEqual(aSize.height, 400);
+    
+    CGRect zeroRect = [self.theme rectForKey:@"zeroRect"];
+    
+    CGPoint zeroPoint = zeroRect.origin;
+    XCTAssertEqual(zeroPoint.x, 0);
+    XCTAssertEqual(zeroPoint.y, 0);
+    
+    CGSize zeroSize = zeroRect.size;
+    XCTAssertEqual(zeroSize.width, 0);
+    XCTAssertEqual(zeroSize.height, 0);
+}
+
 @end
