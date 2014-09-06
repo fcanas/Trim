@@ -105,6 +105,11 @@ CGSize resolveSizeIMP(TRIMTheme *self, SEL _cmd)
     return [self sizeForKey:NSStringFromSelector(_cmd)];
 }
 
+CGRect resolveRectIMP(TRIMTheme *self, SEL _cmd)
+{
+    return [self rectForKey:NSStringFromSelector(_cmd)];
+}
+
 + (BOOL)resolveInstanceMethod:(SEL)aSEL
 {
     objc_property_t property = class_getProperty(self, sel_getName(aSEL));
@@ -128,6 +133,12 @@ CGSize resolveSizeIMP(TRIMTheme *self, SEL _cmd)
         return YES;
     } else if (propertyType && strcmp(propertyType, "{CGSize=dd}") == 0){
         class_addMethod([self class], aSEL, (IMP) resolveSizeIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGRect={CGPoint=ff}{CGSize=ff}}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolveRectIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGRect={CGPoint=dd}{CGSize=dd}}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolveRectIMP, "@@:");
         return YES;
     }
     

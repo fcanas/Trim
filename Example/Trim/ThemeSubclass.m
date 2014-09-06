@@ -10,6 +10,6 @@
 
 @implementation ThemeSubclass
 
-@dynamic mojoGreen, backgroundColor, red, goofyFont, aPoint, zeroPoint, aSize, zeroSize;
+@dynamic mojoGreen, backgroundColor, red, goofyFont, aPoint, zeroPoint, aSize, zeroSize, aRect, zeroRect;
 
 @end

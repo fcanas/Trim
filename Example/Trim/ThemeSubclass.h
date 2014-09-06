@@ -22,4 +22,7 @@
 @property (nonatomic, readonly) CGSize aSize;
 @property (nonatomic, readonly) CGSize zeroSize;
 
+@property (nonatomic, readonly) CGRect aRect;
+@property (nonatomic, readonly) CGRect zeroRect;
+
 @end
