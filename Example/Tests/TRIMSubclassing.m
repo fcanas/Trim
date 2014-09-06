@@ -54,4 +54,15 @@
     XCTAssertEqual(zeroPoint.y, 0);
 }
 
+- (void)testSizes
+{
+    CGSize aSize = [self.theme aSize];
+    XCTAssertEqual(aSize.width, 150);
+    XCTAssertEqual(aSize.height, 400);
+    
+    CGSize zeroSize = [self.theme zeroSize];
+    XCTAssertEqual(zeroSize.width, 0);
+    XCTAssertEqual(zeroSize.height, 0);
+}
+
 @end
