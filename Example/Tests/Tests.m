@@ -41,6 +41,8 @@
 {
     XCTAssertEqualObjects([self.theme fontWithNameKey:@"goofyFont" sizeKey:@"goofyFontSize"],
                           [UIFont fontWithName:@"Zapfino" size:27], @"Should load and build the right font with a name and size key");
+    XCTAssertEqualObjects([self.theme fontForKey:@"goofyFont"],
+                          [UIFont fontWithName:@"Zapfino" size:27], @"Should load and build the right font with a name and size key");
 }
 
 - (void)testPresetFonts
@@ -51,6 +53,51 @@
                           [UIFont fontWithName:@"Avenir-Book" size:18], @"Should return the right font for subheadline with preset keys");
     XCTAssertEqualObjects([self.theme headlineFont],
                           [UIFont fontWithName:@"Avenir-Book" size:24], @"Should return the right font for headline with preset keys");
+}
+
+- (void)testPoints
+{
+    CGPoint aPoint = [self.theme pointForKey:@"aPoint"];
+    XCTAssertEqual(aPoint.x, 150);
+    XCTAssertEqual(aPoint.y, 400);
+    
+    CGPoint zeroPoint = [self.theme pointForKey:@"zeroPoint"];
+    XCTAssertEqual(zeroPoint.x, 0);
+    XCTAssertEqual(zeroPoint.y, 0);
+}
+
+- (void)testSizes
+{
+    CGSize aSize = [self.theme sizeForKey:@"aSize"];
+    XCTAssertEqual(aSize.width, 150);
+    XCTAssertEqual(aSize.height, 400);
+    
+    CGSize zeroSize = [self.theme sizeForKey:@"zeroSize"];
+    XCTAssertEqual(zeroSize.width, 0);
+    XCTAssertEqual(zeroSize.height, 0);
+}
+
+- (void)testRects
+{
+    CGRect aRect = [self.theme rectForKey:@"aRect"];
+    
+    CGPoint aPoint = aRect.origin;
+    XCTAssertEqual(aPoint.x, 150);
+    XCTAssertEqual(aPoint.y, 400);
+   
+    CGSize aSize = aRect.size;
+    XCTAssertEqual(aSize.width, 150);
+    XCTAssertEqual(aSize.height, 400);
+    
+    CGRect zeroRect = [self.theme rectForKey:@"zeroRect"];
+    
+    CGPoint zeroPoint = zeroRect.origin;
+    XCTAssertEqual(zeroPoint.x, 0);
+    XCTAssertEqual(zeroPoint.y, 0);
+    
+    CGSize zeroSize = zeroRect.size;
+    XCTAssertEqual(zeroSize.width, 0);
+    XCTAssertEqual(zeroSize.height, 0);
 }
 
 @end

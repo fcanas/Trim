@@ -16,4 +16,13 @@
 
 @property (nonatomic, readonly) UIFont *goofyFont;
 
+@property (nonatomic, readonly) CGPoint aPoint;
+@property (nonatomic, readonly) CGPoint zeroPoint;
+
+@property (nonatomic, readonly) CGSize aSize;
+@property (nonatomic, readonly) CGSize zeroSize;
+
+@property (nonatomic, readonly) CGRect aRect;
+@property (nonatomic, readonly) CGRect zeroRect;
+
 @end

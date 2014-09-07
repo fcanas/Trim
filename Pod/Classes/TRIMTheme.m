@@ -46,6 +46,28 @@
     return [self.theme[key] floatValue];
 }
 
+#pragma mark CGGeometry
+
+- (CGPoint)pointForKey:(NSString *)key
+{
+    NSDictionary *pointDict = self.theme[key];
+    return CGPointMake([pointDict[@"x"] floatValue], [pointDict[@"y"] floatValue]);
+}
+
+- (CGSize)sizeForKey:(NSString *)key
+{
+    NSDictionary *sizeDict = self.theme[key];
+    return CGSizeMake([sizeDict[@"width"] floatValue], [sizeDict[@"height"] floatValue]);
+}
+
+- (CGRect)rectForKey:(NSString *)key
+{
+    NSDictionary *rectDictionary = self.theme[key];
+    NSDictionary *origin = rectDictionary[@"origin"];
+    NSDictionary *size = rectDictionary[@"size"];
+    return CGRectMake([origin[@"x"] floatValue], [origin[@"y"] floatValue], [size[@"width"] floatValue], [size[@"height"] floatValue]);
+}
+
 #pragma mark - Fonts
 
 @dynamic headlineFont, subheadlineFont, bodyFont;
@@ -73,6 +95,21 @@ UIFont *resolveFontIMP(TRIMTheme *self, SEL _cmd)
     return [self fontForKey:NSStringFromSelector(_cmd)];
 }
 
+CGPoint resolvePointIMP(TRIMTheme *self, SEL _cmd)
+{
+    return [self pointForKey:NSStringFromSelector(_cmd)];
+}
+
+CGSize resolveSizeIMP(TRIMTheme *self, SEL _cmd)
+{
+    return [self sizeForKey:NSStringFromSelector(_cmd)];
+}
+
+CGRect resolveRectIMP(TRIMTheme *self, SEL _cmd)
+{
+    return [self rectForKey:NSStringFromSelector(_cmd)];
+}
+
 + (BOOL)resolveInstanceMethod:(SEL)aSEL
 {
     objc_property_t property = class_getProperty(self, sel_getName(aSEL));
@@ -84,6 +121,24 @@ UIFont *resolveFontIMP(TRIMTheme *self, SEL _cmd)
         return YES;
     } else if (propertyType && strcmp(propertyType, "@\"UIFont\"") == 0){
         class_addMethod([self class], aSEL, (IMP) resolveFontIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGPoint=ff}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolvePointIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGPoint=dd}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolvePointIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGSize=ff}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolveSizeIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGSize=dd}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolveSizeIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGRect={CGPoint=ff}{CGSize=ff}}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolveRectIMP, "@@:");
+        return YES;
+    } else if (propertyType && strcmp(propertyType, "{CGRect={CGPoint=dd}{CGSize=dd}}") == 0){
+        class_addMethod([self class], aSEL, (IMP) resolveRectIMP, "@@:");
         return YES;
     }
     
