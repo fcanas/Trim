@@ -122,22 +122,13 @@ CGRect resolveRectIMP(TRIMTheme *self, SEL _cmd)
     } else if (propertyType && strcmp(propertyType, "@\"UIFont\"") == 0){
         class_addMethod([self class], aSEL, (IMP) resolveFontIMP, "@@:");
         return YES;
-    } else if (propertyType && strcmp(propertyType, "{CGPoint=ff}") == 0){
+    } else if (propertyType && strcmp(propertyType, @encode(CGPoint)) == 0){
         class_addMethod([self class], aSEL, (IMP) resolvePointIMP, "@@:");
         return YES;
-    } else if (propertyType && strcmp(propertyType, "{CGPoint=dd}") == 0){
-        class_addMethod([self class], aSEL, (IMP) resolvePointIMP, "@@:");
-        return YES;
-    } else if (propertyType && strcmp(propertyType, "{CGSize=ff}") == 0){
+    } else if (propertyType && strcmp(propertyType, @encode(CGSize)) == 0){
         class_addMethod([self class], aSEL, (IMP) resolveSizeIMP, "@@:");
         return YES;
-    } else if (propertyType && strcmp(propertyType, "{CGSize=dd}") == 0){
-        class_addMethod([self class], aSEL, (IMP) resolveSizeIMP, "@@:");
-        return YES;
-    } else if (propertyType && strcmp(propertyType, "{CGRect={CGPoint=ff}{CGSize=ff}}") == 0){
-        class_addMethod([self class], aSEL, (IMP) resolveRectIMP, "@@:");
-        return YES;
-    } else if (propertyType && strcmp(propertyType, "{CGRect={CGPoint=dd}{CGSize=dd}}") == 0){
+    } else if (propertyType && strcmp(propertyType, @encode(CGRect)) == 0){
         class_addMethod([self class], aSEL, (IMP) resolveRectIMP, "@@:");
         return YES;
     }
