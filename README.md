@@ -41,7 +41,7 @@ it straight from the source, simply add the following line to your Podfile:
 
 ## Author
 
-Fabian Canas, fcanas@gmail.com
+Fabian Canas, [@fcanas](https://twitter.com/fcanas)
 
 ## License
 
