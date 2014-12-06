@@ -37,7 +37,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 Trim will be available through [CocoaPods](http://cocoapods.org). To install
 it straight from the source, simply add the following line to your Podfile:
 
-    pod "Trim", :git => 'https://github.com/fcanas/Trim.git'
+```ruby
+pod "Trim", :git => 'https://github.com/fcanas/Trim.git'
+```
 
 ## Author
 
